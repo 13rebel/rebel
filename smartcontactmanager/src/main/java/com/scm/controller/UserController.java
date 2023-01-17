@@ -34,7 +34,7 @@ public class UserController {
 	}
 
 	// dashboard handler
-	@PostMapping("/user/dashboard")
+	@GetMapping("/user/dashboard")
 	public String dashboard(Model model, Principal principal) {
 		model.addAttribute("title", "Dashboard");
 		return "normal_user/dashboard";
