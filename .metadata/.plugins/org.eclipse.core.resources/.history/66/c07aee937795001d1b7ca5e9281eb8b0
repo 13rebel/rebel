@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal_user/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>dashboard</title>
+</head>
+<body>
+	<section>
+		<h1>Welcome to dashboard</h1>
+		<h1 class="text-center bg-secondary mt-5">Your All Contect List Are Here..</h1>
+	</section>
+
+</body>
+</html>

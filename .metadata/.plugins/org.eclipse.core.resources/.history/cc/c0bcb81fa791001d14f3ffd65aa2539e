@@ -1,0 +1,63 @@
+package com.scm.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.scm.entities.User;
+import com.scm.helper.Message;
+import com.scm.repo.UserRepo;
+
+import jakarta.servlet.http.HttpSession;
+
+@Controller
+public class Home {
+	@Autowired
+	private UserRepo userRepo;
+	
+	//Home handler 
+	
+	@GetMapping("/")
+	public String home() {
+		return "home";
+	}
+	
+	//signup page handler
+	@GetMapping("/signup/")
+	public String signup(Model model) {
+		model.addAttribute("user",new User());
+		return "signup";
+	}
+	
+	
+	@PostMapping("/registor/")
+	public String registor(@ModelAttribute("user") User user , @RequestParam(value="agreement",defaultValue = "false")boolean agreement,Model model,HttpSession session) {
+		
+		
+		try {
+			if(!agreement) {
+				System.out.println("You have not aggred terms and condition");
+				throw new Exception("You have not aggred terms and condition");
+			}
+			user.setRole("ROLE_USER");
+			user.setEnabled(true);
+			System.out.println(agreement);
+			System.out.println(user);
+			
+			this.userRepo.save(user);
+			
+			model.addAttribute("user",user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("user",user);
+			session.setAttribute("message", new Message("Something went wrong!!"+e.getMessage(), "alert-error"));
+			return "signup";
+		}
+		
+	}
+
+}

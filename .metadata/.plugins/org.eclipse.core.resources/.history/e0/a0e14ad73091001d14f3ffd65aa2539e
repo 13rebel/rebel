@@ -1,0 +1,5 @@
+package com.scm.dao;
+
+public interface UserRepo {
+
+}

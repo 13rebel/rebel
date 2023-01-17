@@ -1,0 +1,9 @@
+#navbar{
+	background-color: lightblue;
+}
+#banner{
+	width: 100%;
+	height: 93vh;
+	background-size: cover;
+	justify-content: center;
+}

@@ -1,0 +1,10 @@
+#navbar{
+	background-color: lightblue;
+}
+#banner{
+	width: 90%;
+	height: 93vh;
+	background-size: cover;
+	background:url("/img/b1.jpg")
+	
+}

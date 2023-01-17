@@ -1,0 +1,36 @@
+package com.scm.controller;
+
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.scm.entities.User;
+import com.scm.repo.UserRepo;
+
+@Controller
+@RequestMapping("/user")
+public class UserController {
+	@Autowired
+	private UserRepo userRepo;
+	
+	@GetMapping("/dashboard")
+	public String dashboard(Model model , Principal principal) {
+		
+		//Geting username from login user..
+		String username = principal.getName();
+		
+		//fetching data from database..
+		User user = userRepo.getUserByName(username);
+		//Adding data to model..
+		model.addAttribute("user" , user);
+		model.addAttribute("title" , "Dashboard");
+		
+		return "normal_user/dashboard";
+		
+	}
+
+}

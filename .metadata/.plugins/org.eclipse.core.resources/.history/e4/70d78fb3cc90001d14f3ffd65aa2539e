@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<section id="banner">
+		<div id="inb">
+			<h1>Ram is good boy</h1>
+		
+		</div>
+
+	</section>
+</body>
+</html>

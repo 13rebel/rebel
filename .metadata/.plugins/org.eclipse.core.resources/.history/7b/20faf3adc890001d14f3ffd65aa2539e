@@ -1,0 +1,10 @@
+#navbar{
+	background-color: lightblue;
+}
+#banner{
+	width: 100%;
+	height: 93vh;
+	background-size:cover;
+	background:url("https://img.freepik.com/free-photo/contact-us-customer-support-enquiry-hotline-concept_53876-128047.jpg?w=1060&t=st=1673342556~exp=1673343156~hmac=0fecfda17b12b4496c7c71089b5ed68d2dc7985b7567402a207116d47f21ec7a")
+	
+}

@@ -1,0 +1,41 @@
+package com.scm.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.scm.entities.User;
+
+@Controller
+public class Home {
+	
+	//Home handler 
+	
+	@GetMapping("/")
+	public String home() {
+		return "home";
+	}
+	
+	//signup page handler
+	@GetMapping("/signup/")
+	public String signup(Model model) {
+		model.addAttribute("user",new User());
+		return "signup";
+	}
+	
+	
+	@PostMapping("/registor/")
+	public String registor(@ModelAttribute("user") User user , @RequestParam(value="agreement",defaultValue = "false")boolean agreement,Model model) {
+		
+		user.setRole("ROLE_USER");
+		user.setEnabled(true);
+		System.out.println(agreement);
+		System.out.println(user);
+		model.addAttribute("user",user);
+		return "signup";
+	}
+
+}

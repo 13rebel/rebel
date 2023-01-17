@@ -1,0 +1,10 @@
+#navbar{
+	background-color: lightblue;
+}
+#banner{
+	width: 100%;
+	height: 93vh;
+	background-size:cover;
+	background:url("https://img.freepik.com/free-photo/register-enquiry-online-web-page-concept_53876-121045.jpg?w=1060&t=st=1673342690~exp=1673343290~hmac=7248766e132476befe90a0b80d24bec93ab3b29aaa56dd493fe0fcfdea3730d9")
+	
+}
