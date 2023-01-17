@@ -52,7 +52,7 @@ public class UserController {
 	
 	//processing contact information
 	
-	@PostMapping("/user/process")
+	@GetMapping("/user/process")
 	public String processContact(@ModelAttribute("contact") Contact contact , Model model , Principal principal) {
 		
 			String name = principal.getName();
