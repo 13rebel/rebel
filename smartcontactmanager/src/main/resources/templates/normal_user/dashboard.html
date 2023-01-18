@@ -7,8 +7,43 @@
 </head>
 <body>
 	<section>
-		<h1><br></h1>
-		<h1 class="text-center bg-secondary rounded mt-3">Your All Contect List Are Here..</h1>
+		<h1>
+			<br>
+		</h1>
+
+		<h1 class="text-center bg-secondary rounded mt-3">Your All
+			Contact List Are Here..</h1>
+		<div class="card">
+			<div class="card-body">
+				<table class="table table-striped table-responsive-sm table-responsive-md">
+					<thead>
+						<tr>
+							<th scope="col">Contact Id</th>
+							<th scope="col">Name</th>
+							<th scope="col">Email</th>
+							<th scope="col">Mob.No</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="c : ${contact}">
+							<th scope="row" th:text="${c.cid}"></th>
+							<td th:text="${c.name}"></td>
+							<td th:text="${c.email}"></td>
+							<td th:text="${c.phone}"></td>
+							<td>
+								<a th:href="@{'/user/deletecontact/'+${c.cid}}" class="btn btn-danger btn-sm">Delete</a>
+								<a th:href="@{'/user/updatecontact/'+${c.cid}}" class="btn btn-primary btn-sm">Update</a>
+
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+
+		</div>
+
 	</section>
 
 </body>

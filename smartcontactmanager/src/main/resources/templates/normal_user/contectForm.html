@@ -10,8 +10,11 @@
 		<h1>
 			<br>
 		</h1>
-		<h1 class="text-center bg-secondary rounded mt-3">Add Contects
-			Here..</h1>
+		
+		<h1 th:if="${cid}" class="text-center bg-secondary rounded mt-3">Update Your Contact Here..</h1>
+		
+		<h1 th:unless="${cid}" class="text-center bg-secondary rounded mt-3">Add Your Contact Here..</h1>
+			
 		<div class="card mr-4 ml-4 rounded bg-light">
 			<div class="card-body">
 
@@ -22,6 +25,10 @@
 							<form action="#" th:object="${contact}"
 								enctype="multipart/form-data" method="get"
 								th:action="@{/user/process}" class="mt-2">
+								
+								<input th:if="${cid}" type="hidden" name="cid" th:value="${contact.cid}"/>
+								
+								
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<div class="input-group-text">
@@ -30,8 +37,10 @@
 										</div>
 
 									</div>
-									<input type="text" id="firstName" name="name"
-										placeholder="Enter first name" required class="form-control" />
+									<input th:if="${cid}" type="text" id="firstName" name="name"
+									th:value="${contact.name}" placeholder="Enter first name" required class="form-control" />
+									<input th:unless="${cid}" type="text" id="firstName" name="name"
+									  placeholder="Enter first name" required class="form-control" />
 
 								</div>
 								<div class="input-group mt-3">
@@ -42,8 +51,10 @@
 										</div>
 
 									</div>
-									<input type="text" id="secondName" name="secondName"
-										placeholder="Enter second name" required class="form-control" />
+									<input th:if="${cid}" type="text" id="secondName" name="secondName"
+									 th:value="${contact.secondName}"	placeholder="Enter second name" required class="form-control" />
+									<input th:unless="${cid}" type="text" id="secondName" name="secondName"
+									 	placeholder="Enter second name" required class="form-control" />
 
 								</div>
 								<div class="input-group mt-3">
@@ -54,8 +65,10 @@
 										</div>
 
 									</div>
-									<input type="email" id="userEmail" name="email"
-										placeholder="Enter email" required class="form-control" />
+									<input th:if="${cid}" type="email" id="userEmail" name="email"
+									  th:value="${contact.email}"	placeholder="Enter email" required class="form-control" />
+									<input th:unless="${cid}" type="email" id="userEmail" name="email"
+									  	placeholder="Enter email" required class="form-control" />
 
 								</div>
 								<div class="input-group mt-3">
@@ -66,8 +79,10 @@
 										</div>
 
 									</div>
-									<input type="number" id="userPhoneNumber" name="phone"
-										placeholder="Enter mobile number" required class="form-control" />
+									<input th:if="${cid}" type="number" id="userPhoneNumber" name="phone"
+									 th:value="${contact.phone}"	placeholder="Enter mobile number" required class="form-control" />
+									<input th:unless="${cid}" type="number" id="userPhoneNumber" name="phone"
+									 	placeholder="Enter mobile number" required class="form-control" />
 
 								</div>
 								<div class="input-group mt-3">
@@ -78,23 +93,28 @@
 										</div>
 
 									</div>
-									<input type="text" id="work" name="work"
-										placeholder="Profession" required class="form-control" />
+									<input th:if="${cid}" type="text" id="work" name="work"
+									  th:value="${contact.work}"	placeholder="Profession" required class="form-control" />
+									<input th:unless="${cid}" type="text" id="work" name="work"
+									  	placeholder="Profession" required class="form-control" />
 
 								</div>
 								<div class="custom-file mt-3">
 									<input type="file" name="image"/>
 								</div>
-								<div class="container text-center mt-1">
-									<button class="btn btn-lg btn-primary"
-									type="submit">Save contact</button>
+								<div th:if="${cid}" class="container text-center mt-1">
+									  <button class="btn btn-lg btn-primary"
+									  type="submit">Update contact</button>
+								</div>
+								<div th:unless="${cid}" class="container text-center mt-1">
+									  <button class="btn btn-lg btn-primary"
+									  type="submit">Save contact</button>
 								</div>
 
 							</form>
 
 						</div>
 					</div>
-
 
 				</div>
 
