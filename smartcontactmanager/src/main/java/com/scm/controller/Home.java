@@ -30,6 +30,16 @@ public class Home {
 		model.addAttribute("title", "Home");
 		return "home";
 	}
+	
+	
+	//About page handler
+	
+	@GetMapping("/about")
+	public String about(Model m) {
+		m.addAttribute("title" ,"About");
+		
+		return "about";
+	}
 
 	// signup page handler
 	@GetMapping("/signup")
